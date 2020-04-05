@@ -2,6 +2,7 @@ class app{
 
 psvm(){
 s.o.p("heelo world");
+s.o.p("heelo world");
 }
   
  p v mymthod(){
