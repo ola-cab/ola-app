@@ -5,7 +5,7 @@ name: Python package
 
 on:
   pull_request:
-    branches: [ test ]
+    branches: [ master ]
     types: [assigned,labeled,reopened,review_requested]
 
 jobs:
