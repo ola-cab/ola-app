@@ -27,6 +27,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - uses: actions/verify-pr-label-action@v1.0.0
+      with:
+         github-token: '${{ secrets.GITHUB_TOKEN }}'
+         valid-labels: 'patch, major, minor, none'    
     - name: Test with pytest
       run: |
         python a.py
