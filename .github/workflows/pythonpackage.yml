@@ -1,32 +1,25 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python package
-
+name: CI
 on:
   pull_request:
-    branches: [ test ]
-    types: [assigned,labeled,reopened,review_requested]
+    branches: [ master ]
+    types: ['labeled', 'synchronize','assigned','labeled','reopened','review_requested']
 
 jobs:
-  build:
-
+  check_pr_milestone:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Create commits
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with pytest
-      run: |
-        python a.py
+          git config user.name 'Peter Evans'
+          git config user.email 'peter-evans@users.noreply.github.com'
+          date +%s > report.txt
+          git commit -am "Modify tracked file during workflow"
+          date +%s > new-report.txt
+          git add -A
+          git commit -m "Add untracked file during workflow"
+    - name: Uncommitted change
+      run: date +%s > report.txt
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v2 
