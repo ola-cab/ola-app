@@ -5,7 +5,9 @@ on:
     branches: [ master ]
     types: ['closed']
 jobs:
+
   check_pr_milestone:
     runs-on: ubuntu-latest
+    if: ! contains(github.event.pull_request.labels.*.name, 'heated')
     steps:
     - uses: actions/checkout@v2
