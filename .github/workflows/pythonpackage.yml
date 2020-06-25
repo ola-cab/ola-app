@@ -7,6 +7,6 @@ on:
 jobs:
   check_pr_milestone:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'heated')
+    if: contains(github.event.pull_request.labels.*.name, 'heated') != true
     steps:
     - uses: actions/checkout@v2
