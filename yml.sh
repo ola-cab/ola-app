@@ -1,3 +1,4 @@
+#!/bin/sh
 function yaml() {
     hashdot=$(gem list hash_dot);
     if ! [ "$hashdot" != "" ]; then sudo gem install "hash_dot" ; fi
