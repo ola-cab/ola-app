@@ -2,4 +2,11 @@ ola app build and deployemnt steps
 1. maven steps
 2. docker build steps
 3. k8s deployment steps
+<<<<<<< HEAD
 k bkj jk kx jk
+=======
+4. github action to use end-end workflow or jenkins pipelines or azure devops
+5. develop helm charts with data seperation
+
+test
+>>>>>>> 6774ec3a04a0704f47d4f202ac635e2e7f0498b4
